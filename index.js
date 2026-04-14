@@ -1,11 +1,14 @@
 import express from "express";
 
+const PORT = process.env.PORT || 3000; // Cheeky trick to avoid port being undefined in listen
+
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello from container</h1>");
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+// Port is already defined.
+app.listen(process.env.PORT, () => {
+  console.log("Server running on port: " + PORT);
 });
